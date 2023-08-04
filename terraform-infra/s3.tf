@@ -1,5 +1,4 @@
 #creating a s3 bucket 
-#enter a unique bucket name here
 resource "aws_s3_bucket" "project_s3" {
   bucket = "mrtfbucket1"
 }
