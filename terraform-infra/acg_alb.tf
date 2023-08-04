@@ -4,6 +4,7 @@ resource "aws_launch_template" "launch_template" {
   image_id      = var.ami_id
   instance_type = var.instance_type
   user_data     = filebase64("apache.sh")
+  vpc_security_group_ids = [aws_security_group.sg_lt.id]
 }
 
 #creating an auto scaling group
@@ -28,7 +29,6 @@ resource "aws_lb" "myLoadBalancer" {
   load_balancer_type = "application"
   subnets            = ["subnet-0735561317170c033", "subnet-02605a2c889accf70"]
   security_groups    = [aws_security_group.sg_alb.id]
-
 }
 
 #configuring and creating the listener for the lb
